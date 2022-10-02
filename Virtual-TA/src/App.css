@@ -1,0 +1,59 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+.App {
+  background-color: #b6dafb;
+  text-align: left;
+  margin: 0;
+  padding: 5px;
+  width: auto;
+  height:100vh;
+
+}
+
+.img {
+  position: absolute;
+  right: 10%;
+  top: 5%;
+  pointer-events: none;
+  size-adjust: 20%;
+}
+
+
+.App-link {
+  color: #ffffff;
+}
+.intro {
+  font-family: Verdana, sans-serif;
+  color: #ffffff;
+  margin-left: 5%;
+  margin-top: 10%;
+  font-size: 500%;
+}
+.info{
+  font-family: Verdana, sans-serif;
+  color: #ffffff;
+  margin-left: 5%;
+  font-size: 300%;
+}
+.Bot{
+
+  position:absolute;
+  bottom: 5%;
+  right: 3%;
+
+}
+.footer{
+  background-color:#2D5C87;
+  position: absolute;
+  bottom: 0;
+  height: 3%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  
+}
