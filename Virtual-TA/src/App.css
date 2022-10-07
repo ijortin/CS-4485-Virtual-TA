@@ -32,12 +32,14 @@ body,html {
   color: #ffffff;
   margin-left: 5%;
   margin-top: 10%;
+  width: 50%;
   font-size: 500%;
 }
 .info{
   font-family: Verdana, sans-serif;
   color: #ffffff;
   margin-left: 5%;
+  width: 50%;
   font-size: 300%;
 }
 .Bot{
