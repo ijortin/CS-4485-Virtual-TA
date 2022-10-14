@@ -1,19 +1,25 @@
-
-{"intents":  [
-  {
-    "tag": "greeting",
-    "patterns": ["Hi", "Hello", "How are you", "Good day"],
-    "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"],
-    "context_set": []
-  },
-  {
-    "tag": "goodbye",
-    "patterns": ["Bye", "See you later", "Goodbye"],
-    "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon"]
-  },
-  {
-    "tag": "thanks",
-    "patterns": ["Thanks", "Thank you", "That's helpful"],
-    "responses": ["Happy to help!", "Any Time!", "My pleasure"]
-  }
-]}
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [ "hi", "hello", "how are you", "good day" ],
+      "responses": [ "Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?" ],
+      "context_set": []
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [ "bye", "see you later", "goodbye" ],
+      "responses": [ "See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon" ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [ "thanks", "thank you", "that's helpful" ],
+      "responses": [ "Happy to help!", "Any Time!", "My pleasure" ]
+    },
+    {
+      "tag": "check1",
+      "patterns": [ "slowest to fastest", "slower", "faster", "growth rate", "run time", "big-Oh", "O(", "upper bound" ],
+      "responses": [ "works" ]
+    }
+  ]
+}
