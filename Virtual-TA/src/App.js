@@ -12,19 +12,6 @@ function App() {
 
     <div className="App">
         <div className = "img"><img src={logo} className="App-logo" alt="logo" /></div>
-      <div className = "intro">
-        <p  >
-          Welcome to your Virtual TA!
-        </p>
-        </div>
-        <div className = "info">
-        <p>
-          Data Structures and Algorithmic Analysis
-        </p>
-        <p>
-          To begin click on the chat bubble in the bottom right
-        </p>
-         </div>
         <div className = "Bot">
         <Chatbot
         config={config}

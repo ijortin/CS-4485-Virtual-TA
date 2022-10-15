@@ -30,24 +30,20 @@ body,html {
 .intro {
   font-family: Verdana, sans-serif;
   color: #ffffff;
-  margin-left: 5%;
-  margin-top: 10%;
-  width: 50%;
-  font-size: 500%;
-}
-.info{
-  font-family: Verdana, sans-serif;
-  color: #ffffff;
-  margin-left: 5%;
+  margin-left: 35%;
+  top:0;
+  position: absolute;
   width: 50%;
   font-size: 300%;
 }
-.Bot{
-
-  position:absolute;
-  bottom: 5%;
-  right: 3%;
-
+.info{
+  font-family: Verdana, sans-serif;
+  position: absolute;
+  color: #ffffff;
+  margin-left: 30%;
+  bottom: 1%;
+  width: 50%;
+  font-size: 300%;
 }
 .footer{
   background-color:#2D5C87;
