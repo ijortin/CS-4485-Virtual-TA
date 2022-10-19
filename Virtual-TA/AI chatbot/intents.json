@@ -19,17 +19,17 @@
     {
       "tag": "Big-O",
       "patterns": [ "list the expressions from slowest to fastest", "which expression is slower", "which expression is faster","is O(n) slower than O(3n)", "Arrange the following expressions by growth rate from slowest to fastest", "run time", "Using the definition of big-Oh, show that 1 is in O(1) and that 1 is in O(n)", "is 2n = O(3n)? Explain why or why not", "is 2n = O(3n)","Using the definitions of big-Oh, find the upper bound for the following expressions", "For each expression, state the range of values of n for which that expression is the most efficient", "what size input can execute in one hour for each algoritthm with the following growth rate equations", "Find a growth rate that squares the run time when we double the input size" ],
-      "responses": [ "Big-O" ]
+      "responses": [ "Consider that big-O notation describes the growth of a function.", "To compare big-O's, think of of the speeds in which your functions grow as their inputs tend to infinity.", "Remember that big-O representations of functions can be simplified.", "Big-O comparisons only care about the simplest representation of the function since that determines the speed of their growth." ]
     },
     {
       "tag": "Tree",
       "patterns": ["show the binary trie for the following collection of values: ", "show the PAT trie for the following collection of values: ", "show the resilt of inserting the value 39 into teh AVL tree on the left", "show the splay tree that results from searching for balue 75 in the splay tree", ""],
-      "responses": [ "Tree" ]
+      "responses": [ "Remember that a binary tree has, as the name suggests, up to 2 branches per node.", "Consider how a tree must change its structure when its contents are modified: Will the root change? Will certain nodes stay on the same side of the root? etc.", "An AVL tree will retain a balanced, binary-tree structure. How will the tree rotate in response to the insertion/deletion?" ]
     },
     {
       "tag": "sorting",
       "patterns": ["shellsort", "mergesort","quicksort","heapsort","radix sort","binsort"],
-      "responses": [ "sorting" ]
+      "responses": [ "The speed of Quicksort is dependent on how you select a pivot.", "Shellsort performs best when the data is mostly sorted, but generally within O(n^2).", "Remember that Radixsort is a non-comparison sort that processes individual digits.", "Heapsort achieves efficiency by, as the name suggests, utilizing the 'heap' data structure. This guarantees that the root node of the heap is the largest (or smallest) element." ]
     }
   ]
 }
