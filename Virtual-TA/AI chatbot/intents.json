@@ -1,35 +1,19 @@
-{
-  "intents": [
-    {
-      "tag": "greeting",
-      "patterns": [ "hi", "hello", "how are you", "good day" ],
-      "responses": [ "Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?" ],
-      "context_set": []
-    },
-    {
-      "tag": "goodbye",
-      "patterns": [ "bye", "see you later", "goodbye" ],
-      "responses": [ "See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon" ]
-    },
-    {
-      "tag": "thanks",
-      "patterns": [ "thanks", "thank you", "that's helpful" ],
-      "responses": [ "Happy to help!", "Any Time!", "My pleasure" ]
-    },
-    {
-      "tag": "Big-O",
-      "patterns": [ "list the expressions from slowest to fastest", "which expression is slower", "which expression is faster","is O(n) slower than O(3n)", "Arrange the following expressions by growth rate from slowest to fastest", "run time", "Using the definition of big-Oh, show that 1 is in O(1) and that 1 is in O(n)", "is 2n = O(3n)? Explain why or why not", "is 2n = O(3n)","Using the definitions of big-Oh, find the upper bound for the following expressions", "For each expression, state the range of values of n for which that expression is the most efficient", "what size input can execute in one hour for each algoritthm with the following growth rate equations", "Find a growth rate that squares the run time when we double the input size" ],
-      "responses": [ "Big-O" ]
-    },
-    {
-      "tag": "Tree",
-      "patterns": ["show the binary trie for the following collection of values: ", "show the PAT trie for the following collection of values: ", "show the resilt of inserting the value 39 into teh AVL tree on the left", "show the splay tree that results from searching for balue 75 in the splay tree", ""],
-      "responses": [ "Tree" ]
-    },
-    {
-      "tag": "sorting",
-      "patterns": ["shellsort", "mergesort","quicksort","heapsort","radix sort","binsort"],
-      "responses": [ "sorting" ]
-    }
-  ]
-}
+
+{"intents":  [
+  {
+    "tag": "greeting",
+    "patterns": ["Hi", "Hello", "How are you", "Good day"],
+    "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"],
+    "context_set": []
+  },
+  {
+    "tag": "goodbye",
+    "patterns": ["Bye", "See you later", "Goodbye"],
+    "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon"]
+  },
+  {
+    "tag": "thanks",
+    "patterns": ["Thanks", "Thank you", "That's helpful"],
+    "responses": ["Happy to help!", "Any Time!", "My pleasure"]
+  }
+]}
