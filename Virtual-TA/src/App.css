@@ -45,6 +45,10 @@ body,html {
   width: 50%;
   font-size: 300%;
 }
+.equations{
+position: absolute;
+top: 10%;
+}
 .footer{
   background-color:#2D5C87;
   position: absolute;
