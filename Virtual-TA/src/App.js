@@ -25,8 +25,10 @@ function App() {
   return (
 
     <div className="App">
+      <div className="form">
               <Form></Form>
-
+              </div>
+              help
         <div className = "img"><img src={logo} className="App-logo" alt="logo" /></div>
         <div className = "Bot">
         <Chatbot

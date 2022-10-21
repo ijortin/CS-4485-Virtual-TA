@@ -46,8 +46,13 @@ body,html {
   font-size: 300%;
 }
 .equations{
+
 position: absolute;
 top: 10%;
+}
+.form{
+  position:absolute;
+  width: 40vh;
 }
 .footer{
   background-color:#2D5C87;
