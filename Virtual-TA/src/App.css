@@ -11,7 +11,7 @@ body,html {
   margin: 0;
   padding: 5px;
   width: auto;
-  height:100vh;
+  height:98vh;
 
 }
 
@@ -53,6 +53,7 @@ top: 10%;
 .form{
   position:absolute;
   width: 40vh;
+  height: 60vh;
 }
 .footer{
   background-color:#2D5C87;
