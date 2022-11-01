@@ -144,4 +144,3 @@ export default function MathForm() {
     </div>
   );
 }
-//This is where I will put the legend for MathJax

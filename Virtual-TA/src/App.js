@@ -1,4 +1,4 @@
-import React from "react"
+
 import './App.css';
 import Footer from './footer'
 import Chatbot from "react-chatbot-kit";
@@ -7,10 +7,17 @@ import config from "./config";
 import MessageParser from "./MessageParser";
 import ActionProvider from "./ActionProvider";
 import Form from "./Form.js"
+import React, { useState, useEffect } from "react";
+import "./App.css";
+  
+
+
+  
 
 function App() {
-  return (
 
+  return(
+    
     <div className="App">
       <div className="form">
               <Form></Form>
@@ -25,7 +32,7 @@ function App() {
       </div>
       <Footer/>
     </div>
-   
+
   );
 }
 
