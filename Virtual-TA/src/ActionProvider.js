@@ -1,26 +1,8 @@
 import React, { useState, useEffect } from "react";
- const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-        // usestate for setting a javascript
-    // object for storing and using data
-    const [data, setdata] = useState({
-      message:"",
-  });
+ let ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
-  // Using useEffect for single rendering
-  useEffect(() => {
-      // Using fetch to fetch the api from 
-      // flask server it will be redirected to proxy
-      fetch("/data").then((res) =>
-          res.json().then((data) => {
-              // Setting a data from api
-              setdata({
-                  message: data.Message,
-              });
-          })
-      );
-  }, []);
   const handleHello = () => {
-    const botMessage = createChatBotMessage(data.message);
+    const botMessage = createChatBotMessage('hi');
 
     setState((prev) => ({
       ...prev,
@@ -35,8 +17,13 @@ import React, { useState, useEffect } from "react";
       messages: [...prev.messages, botMessage],
     }));
   };
-  const handleDefault = () => {
-    const botMessage = createChatBotMessage('Hmm. I am not sure how to answer that. Please ask something else');
+  let handleDefault = () => {
+    const botMessage = createChatBotMessage(
+      "Here's what I found for you",
+      {
+        widget: 'dogPicture',
+      }
+    );
 
     setState((prev) => ({
       ...prev,

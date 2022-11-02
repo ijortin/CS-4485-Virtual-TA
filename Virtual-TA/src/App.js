@@ -28,7 +28,6 @@ function App() {
         messageParser={MessageParser}
         actionProvider={ActionProvider}
       />
-
       </div>
       <Footer/>
     </div>
