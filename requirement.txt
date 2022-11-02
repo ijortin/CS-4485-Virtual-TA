@@ -1,0 +1,6 @@
+In order to run this react project on your local machine
+1. You need to install node.js version 18.12 is fine (https://nodejs.org/en/)
+2. With node installed, navigate to the project directory in Visual Studio
+3. In the terminal type npm install
+4. From there run npm start 
+5. The project should now be available to see on local host
