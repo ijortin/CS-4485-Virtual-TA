@@ -1,37 +1,30 @@
 import React, { useState, useEffect } from "react";
- let ActionProvider = ({ createChatBotMessage, setState, children }) => {
+ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
+              // usestate for setting a javascript
+    // object for storing and using data
+    const [data, setdata] = useState({
+      message:"",
+  });
 
-  const handleHello = () => {
-    const botMessage = createChatBotMessage('hi');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleGoodbye = () => {
-    const botMessage = createChatBotMessage('Goodbye. Talk to you later!');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  let handleDefault = () => {
+  // Using useEffect for single rendering
+  useEffect(() => {
+      // Using fetch to fetch the api from 
+      // flask server it will be redirected to proxy
+      fetch("/data").then((res) =>
+          res.json().then((data) => {
+              // Setting a data from api
+              setdata({
+                  message: data.Message,
+              });
+          })
+      );
+        });
+  const handleDefault = (msg) => {
+    
     const botMessage = createChatBotMessage(
-      "Here's what I found for you",
-      {
-        widget: 'dogPicture',
-      }
+     msg
     );
 
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleSelection = () => {
-    const botMessage = createChatBotMessage("The space complexity of Selection Sort is O(1)");
 
     setState((prev) => ({
       ...prev,
@@ -45,10 +38,7 @@ import React, { useState, useEffect } from "react";
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           actions: {
-            handleHello,
-            handleGoodbye,
             handleDefault,
-            handleSelection,
           },
         });
       })}
