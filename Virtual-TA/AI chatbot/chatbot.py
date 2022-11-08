@@ -100,63 +100,20 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-#inp = ""
+@app.post("/data")
+def chat():
+    print("Start talking with the bot (type quit to stop)!")
+    inp = request.get_json().get("title")
 
-#@app.route('/predict', methods = ['POST'])
-#def getinp(i):
-#    inp = i
-    #inp = input("You: ")
+    results = model.predict([bag_of_words(inp, words)])
+    results_index = numpy.argmax(results)
+    tag = labels[results_index]
 
-#@app.route('/data')
-#def getout():
-#    #outty = o
-#    results = model.predict([bag_of_words(inp, words)])
-#    results_index = numpy.argmax(results)
-##    tag = labels[results_index]
-#
-#    for tg in data["intents"]:
-#        if tg['tag'] == tag:
-#            responses = tg['responses']
-#            if responses == "works":
-#                # inp O() o() theta()
-#                # i_words = inp.split(" ")
-#                # print(compared(i_words))
-#                print("works")
-#            else:
-#                outs = random.choice(responses)
-#                #getout(outs)
-#                #print(outs)
+    for tg in data["intents"]:
+        if tg['tag'] == tag:
+            responses = tg['responses']
+            outs = random.choice(responses)
+            return { "Message": outs,}      
 
-@app.post('/data')
-def get_time():
-    text = request.get_json().get("title")
-   # Returning an api for showing in  reactjs
-    return {
-        'Message': text,
-        }
-#@app.post("/data")
-#def chat():
-#    print("Start talking with the bot (type quit to stop)!")
-#    while True:
-#        inp = input("You: ")
-#        #getinp(inp)
-#        if inp.lower() == "quit":
-#            break
-#        #inp = request.get_json().get("title")
-
-#        results = model.predict([bag_of_words(inp, words)])
-#        results_index = numpy.argmax(results)
-#        tag = labels[results_index]
-
-#        for tg in data["intents"]:
-#            if tg['tag'] == tag:
-#                responses = tg['responses']
-#                outs = random.choice(responses)
-#                #re = {'Message': outs}
-#                #return re
-#                #getout(outs)
-#                #return { "Message": outs,}
-#                print(outs)
 if __name__ == "__main__":
     app.run()
-#chat()
