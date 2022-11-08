@@ -1,45 +1,48 @@
-# This is a sample Python script.
+from typing import TextIO
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import nltk
+
+#nltk.download('punkt')
 from nltk.stem.lancaster import LancasterStemmer
+
 stemmer = LancasterStemmer()
+
 import numpy
 import tflearn
 import tensorflow
+from tensorflow.python.framework import ops
 import random
-
-
-#loads json data
-#json file is our responses to certain tags
 import json
 import pickle
 
-with open("intents.json") as file:
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+with open(r'C:\Users\Timothy Choi\chatting\chat\.venv\intents.json') as file:
     data = json.load(file)
 
 try:
-    with open("data.pickle", "rb") as f:
+    with open("data.pickle", "rt") as f:
         words, labels, training, output = pickle.load(f)
+
 except:
     words = []
     labels = []
     docs_x = []
     docs_y = []
 
-#extracting data
-    for intent in data['intents']:
-        for pattern in intent['patterns']:
+    for intent in data["intents"]:
+        for pattern in intent["patterns"]:
             wrds = nltk.word_tokenize(pattern)
             words.extend(wrds)
             docs_x.append(wrds)
             docs_y.append(intent["tag"])
 
-        if intent['tag'] not in labels:
-            labels.append(intent['tag'])
+        if intent["tag"] not in labels:
+            labels.append(intent["tag"])
 
-    words = [stemmer.stew(w.lower()) for w in words if w != "?"]
+    words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
 
     labels = sorted(labels)
@@ -69,24 +72,21 @@ except:
     training = numpy.array(training)
     output = numpy.array(output)
 
-#developing model (neural network)
-tensorflow.reset_default_graph()
-net = tflearn.input_data(shape=[None,len(training[9])])
-net = tflearn.fully_connected(net, 8)
-net = tflearn.fully_connected(net, 8)
-net = tflearn.fully_connected(net, len(output[0]), activation = "softmax")
-net = tflearn.regression(net)
+    ops.reset_default_graph()
 
-model = tflearn.DNN(net)
+    net = tflearn.input_data(shape=[None, len(training[0])])
+    net = tflearn.fully_connected(net, 5)
+    net = tflearn.fully_connected(net, 6)
+        # net = tflearn.fully_connected(net, 6)
+    net = tflearn.fully_connected(net, 5)
+    net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
+    net = tflearn.regression(net)
 
-#training and save model
-try:
-    model.load("model.tflearn")
-except:
-    model.fit(training, output, n_epoch=1000, batch_size=8, show_metric = True)
+    model = tflearn.DNN(net)
+    model.fit(training, output, n_epoch=100, batch_size=1, show_metric=True)
     model.save("model.tflearn")
 
-#making predictions
+
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
 
@@ -100,23 +100,20 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
+@app.post("/data")
 def chat():
     print("Start talking with the bot (type quit to stop)!")
-    while True:
-        inp = input("You: ")
-        if inp.lower() == "quit":
-            break
+    inp = request.get_json().get("title")
 
-        results = model.predict([bag_of_words(inp, words)])
-        results_index = numpy.argmax(results)
-        tag = labels[results_index]
+    results = model.predict([bag_of_words(inp, words)])
+    results_index = numpy.argmax(results)
+    tag = labels[results_index]
 
-        for tg in data["intents"]:
-            if tg['tag'] == tag:
-                responses = tg['responses']
+    for tg in data["intents"]:
+        if tg['tag'] == tag:
+            responses = tg['responses']
+            outs = random.choice(responses)
+            return { "Message": outs,}      
 
-        print(random.choice(responses))
-chat()
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    app.run()

@@ -1,18 +1,12 @@
 // MessageParser starter code
-import React from 'react';
+import React, { useState, useEffect } from "react";
+
   const MessageParser = ({ children, actions }) => {
+    const [datas, setdatas] = useState({
+      message:"",
+  })
     const parse = (message) => {
-      if (message.includes('hello')) {
-        actions.handleHello();
-      }
-      else if (message.includes('bye')) {
-        actions.handleGoodbye();
-      }
-      else if (message.includes('space')) {
-        actions.handleSelection();
-      }
-      else{
-        actions.handleDefault();}
+        actions.handleDefault(message);
     };
   
     return (
