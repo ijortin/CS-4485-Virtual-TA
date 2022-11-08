@@ -6,18 +6,19 @@ import React, { useState, useEffect } from "react";
       message:"",
   });
 
-  const handleDefault = (msg) => {
+  const handleDefault = async (msg) => {
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title: msg })
       };
-      fetch('/data', requestOptions)
-          .then(response => response.json())
-          .then(data => setdatas({
-            message: data.Message,}));
+      const response = await (await fetch('/data', requestOptions)).json()
+           setdatas({
+            message: response.Message,})
+            console.log(response)
 
-    const botMessage = createChatBotMessage(datas.message);
+
+    const botMessage = createChatBotMessage(response.Message);
 
     setState((prev) => ({
       ...prev,

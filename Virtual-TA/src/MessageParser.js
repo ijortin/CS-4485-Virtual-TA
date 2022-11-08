@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 
   const MessageParser = ({ children, actions }) => {
-  
+    const [datas, setdatas] = useState({
+      message:"",
+  })
     const parse = (message) => {
         actions.handleDefault(message);
     };
