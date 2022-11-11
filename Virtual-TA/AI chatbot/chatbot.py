@@ -19,6 +19,15 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+COMPLEXITY_COMPS = {
+    'log(n)':1,
+    'n':2,
+    'nlog(n)':3,
+    'n^2':4,
+    '2^n':5,
+    'n!':6
+}
+
 with open(r'C:\Users\Timothy Choi\chatting\chat\.venv\intents.json') as file:
     data = json.load(file)
 
@@ -100,6 +109,22 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
+def bigOComp(i_words):
+    val1 = 0
+    val2 = 0
+    for word in i_words:
+        if word in COMPLEXITY_COMPS.keys():
+            if val1==0:
+                val1 = word
+                continue
+            else:
+                val2 = word
+                break
+    if COMPLEXITY_COMPS[val1] > COMPLEXITY_COMPS[val2]:
+        return (f"O({val1}) is slower than O({val2})")
+    else:
+        return (f"O({val1}) is faster than O({val2})")
+
 @app.post("/data")
 def chat():
     print("Start talking with the bot (type quit to stop)!")
@@ -110,7 +135,11 @@ def chat():
     tag = labels[results_index]
 
     for tg in data["intents"]:
-        if tg['tag'] == tag:
+        if tg['tag'] == 'Big-O':
+            i_words = inp.split(" ")
+            outs = bigOComp(i_words)
+            return { "Message": outs,}   
+        elif tg['tag'] == tag:
             responses = tg['responses']
             outs = random.choice(responses)
             return { "Message": outs,}      
