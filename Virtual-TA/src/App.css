@@ -11,7 +11,7 @@ body,html {
   margin: 0;
   padding: 5px;
   width: auto;
-  height:100vh;
+  height:98vh;
 
 }
 
@@ -30,22 +30,30 @@ body,html {
 .intro {
   font-family: Verdana, sans-serif;
   color: #ffffff;
-  margin-left: 5%;
-  margin-top: 10%;
-  font-size: 500%;
+  margin-left: 35%;
+  top:0;
+  position: absolute;
+  width: 50%;
+  font-size: 300%;
 }
 .info{
   font-family: Verdana, sans-serif;
+  position: absolute;
   color: #ffffff;
-  margin-left: 5%;
+  margin-left: 30%;
+  bottom: 1%;
+  width: 50%;
   font-size: 300%;
 }
-.Bot{
+.equations{
 
+position: absolute;
+top: 10%;
+}
+.form{
   position:absolute;
-  bottom: 5%;
-  right: 3%;
-
+  width: 40vh;
+  height: 60vh;
 }
 .footer{
   background-color:#2D5C87;

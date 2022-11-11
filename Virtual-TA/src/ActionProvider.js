@@ -1,31 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
  const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-  const handleHello = () => {
-    const botMessage = createChatBotMessage('Hello. Nice to meet you.');
+              // usestate for setting a javascript
+    // object for storing and using data
+    const [datas, setdatas] = useState({
+      message:"",
+  });
 
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleGoodbye = () => {
-    const botMessage = createChatBotMessage('Goodbye. Talk to you later!');
+  const handleDefault = async (msg) => {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: msg })
+      };
+      const response = await (await fetch('/data', requestOptions)).json()
+           setdatas({
+            message: response.Message,})
+            console.log(response)
 
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleDefault = () => {
-    const botMessage = createChatBotMessage('Hmm. I am not sure how to answer that. Please ask something else');
 
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleSelection = () => {
-    const botMessage = createChatBotMessage("The space complexity of Selection Sort is O(1)");
+    const botMessage = createChatBotMessage(response.Message);
 
     setState((prev) => ({
       ...prev,
@@ -39,10 +32,7 @@ import React from 'react';
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           actions: {
-            handleHello,
-            handleGoodbye,
             handleDefault,
-            handleSelection,
           },
         });
       })}
@@ -50,4 +40,3 @@ import React from 'react';
   );
 };
  export default ActionProvider;
- 
