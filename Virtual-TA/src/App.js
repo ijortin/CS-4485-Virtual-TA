@@ -7,7 +7,7 @@ import config from "./config";
 import MessageParser from "./MessageParser";
 import ActionProvider from "./ActionProvider";
 import Form from "./Form.js"
-import React, { useState, useEffect } from "react";
+import React from 'react'
 import "./App.css";
   
 
@@ -22,6 +22,7 @@ function App() {
       <div className="form">
               <Form></Form>
               </div>
+  
         <div className = "Bot">
         <Chatbot
         config={config}

@@ -12,7 +12,7 @@
     "mathjax": "^3.2.2",
     "mathjax-react": "^2.0.1",
     "react": "^18.2.0",
-    "react-chatbot-kit": "^2.1.0",
+    "react-chatbot-kit": "github:purplesport/react-chatbot-kit",
     "react-dom": "^18.2.0",
     "react-mathjax2": "^0.0.2",
     "react-scripts": "^2.1.3",
