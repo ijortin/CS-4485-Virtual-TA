@@ -28,7 +28,7 @@
       },
       {
         "tag": "sorting",
-        "patterns": ["shellsort", "mergesort","quicksort","heapsort","radix sort","binsort","bucket sort","counting sort","cubesort"],
+        "patterns": ["shellsort worst case is", "the best case of mergesort","the average runtime of quicksort","heapsort","radix sort","binsort","bucket sort","counting sort","cubesort"],
         "responses": [ "The speed of Quicksort is dependent on how you select a pivot.", "Shellsort performs best when the data is mostly sorted, but generally within O(n^2).", "Remember that Radixsort is a non-comparison sort that processes individual digits.", "Heapsort achieves efficiency by, as the name suggests, utilizing the 'heap' data structure. This guarantees that the root node of the heap is the largest (or smallest) element." ]
       }
     ]
