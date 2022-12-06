@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-
+//create config options to define latex delimiters
   const conf = {
     loader: { load: ["input/asciimath"] },
     asciimath: {
@@ -13,6 +13,7 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
       ]
     }
   };
+//create table entries
   const dataSource = [
     {
       key: '1',
