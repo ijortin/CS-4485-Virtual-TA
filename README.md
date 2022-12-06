@@ -10,3 +10,5 @@ Key Components of this Project:
       - Visual component that acts as a guide to Latex syntax for the user. 
 2. Python Backend
    -  Hosted on Flask. Model built using keras in tensorflow. 
+   -  Intents.json
+      - Edit this to help train the bot on different questions that can be asked  
