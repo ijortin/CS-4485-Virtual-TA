@@ -15,7 +15,7 @@ import random
 import json
 import pickle
 import binarytree
-from trees import AVL_Tree, patricia
+from trees import AVL_Tree, PatriciaTrie, patricia
 
 from flask import Flask, jsonify, request
 
@@ -140,10 +140,10 @@ def treeToken(i_words, vals):
             tempTree.preOrder(root)
             return ' '.join(tempTree._data)
         elif word == 'pat':
-            tempTree = patricia()
+            tempTree = PatriciaTrie()
             for i in vals:
-                tempTree.addWord(i)
-            return ' '.join(tempTree._data)
+                tempTree.add(i)
+            return ' '.join(tempTree._storage)
 
 @app.post("/data")
 def chat():
