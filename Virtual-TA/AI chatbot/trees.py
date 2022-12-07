@@ -235,7 +235,7 @@ def matching_prefix_index(word1, word2):
             return i
     return max_len
 
-class PatriciaTrie(object):
+class PatriciaTrie():
     def __init__(self):
         self._storage = {}
         self._complete_prefix_flag = False
