@@ -8,7 +8,9 @@ class TreeNode(object):
 # AVL tree class which supports the
 # Insert operation
 class AVL_Tree(object):
- 
+    def __init__(self):
+        self._data = []
+        
     # Recursive function to insert key in
     # subtree rooted with node and returns
     # new root of subtree.
@@ -105,7 +107,7 @@ class AVL_Tree(object):
         if not root:
             return
  
-        print("{0} ".format(root.val), end="")
+        self._data.append(root.val)
         self.preOrder(root.left)
         self.preOrder(root.right)
 
