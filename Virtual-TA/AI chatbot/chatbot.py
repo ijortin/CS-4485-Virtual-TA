@@ -131,7 +131,7 @@ def treeToken(i_words, vals):
     for word in i_words:
         if word == 'binary':
             root = binarytree.build(vals)
-            return root.__str__()
+            return ' '.join(root.preorder)
         elif word == 'avl':
             tempTree = AVL_Tree()
             root = None
