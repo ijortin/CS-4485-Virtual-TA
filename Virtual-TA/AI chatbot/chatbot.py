@@ -132,12 +132,13 @@ def treeToken(i_words, vals):
         if word == 'binary':
             root = binarytree.build(vals)
             return root
-        elif word == 'avl': # add these
+        elif word == 'avl':
             tempTree = AVL_Tree()
             root = None
             for i in vals:
                 root = tempTree.insert(root, i)
-            return tempTree.preOrder(root)
+            tempTree.preOrder(root)
+            return tempTree._data
         elif word == 'pat':
             tempTree = patricia()
             for i in vals:
