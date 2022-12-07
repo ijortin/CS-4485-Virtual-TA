@@ -14,6 +14,8 @@ from tensorflow.python.framework import ops
 import random
 import json
 import pickle
+import binarytree
+from trees import AVL_Tree, patricia
 
 from flask import Flask, jsonify, request
 
@@ -125,6 +127,23 @@ def bigOComp(i_words):
     else:
         return (f"O({val1}) is faster than O({val2})")
 
+def treeToken(i_words, vals):
+    for word in i_words:
+        if word == 'binary':
+            root = binarytree.build(vals)
+            return root
+        elif word == 'avl': # add these
+            tempTree = AVL_Tree()
+            root = None
+            for i in vals:
+                root = tempTree.insert(root, i)
+            return tempTree.preOrder(root)
+        elif word == 'pat':
+            tempTree = patricia()
+            for i in vals:
+                tempTree.addWord(i)
+            return tempTree._d
+
 @app.post("/data")
 def chat():
     print("Start talking with the bot (type quit to stop)!")
@@ -138,11 +157,17 @@ def chat():
         if tg['tag'] == 'Big-O':
             i_words = inp.split(" ")
             outs = bigOComp(i_words)
-            return { "Message": outs,}   
+            return { "Message": outs,}  
+        elif tg['tag'] == 'Tree':
+            tempSplit = inp.split(":")
+            i_words = tempSplit[-1].split(" ")
+            outs = treeToken(tempSplit[0].split(" "), i_words)
+            return { "Message": outs,} 
         elif tg['tag'] == tag:
             responses = tg['responses']
             outs = random.choice(responses)
             return { "Message": outs,}      
+    
 
 if __name__ == "__main__":
     app.run()
