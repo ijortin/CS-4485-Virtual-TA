@@ -142,7 +142,7 @@ def treeToken(i_words, vals):
             tempTree = patricia()
             for i in vals:
                 tempTree.addWord(i)
-            return tempTree._d
+            return tempTree._data
 
 @app.post("/data")
 def chat():
