@@ -131,19 +131,19 @@ def treeToken(i_words, vals):
     for word in i_words:
         if word == 'binary':
             root = binarytree.build(vals)
-            return root
+            return root.__str__()
         elif word == 'avl':
             tempTree = AVL_Tree()
             root = None
             for i in vals:
                 root = tempTree.insert(root, i)
             tempTree.preOrder(root)
-            return tempTree._data
+            return ' '.join(tempTree._data)
         elif word == 'pat':
             tempTree = patricia()
             for i in vals:
                 tempTree.addWord(i)
-            return tempTree._data
+            return ' '.join(tempTree._data)
 
 @app.post("/data")
 def chat():
